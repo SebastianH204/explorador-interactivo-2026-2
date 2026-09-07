@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- Head punto 1 -->
+
+<head>
+    <style>
+        a {
+            display: inline-block;
+            padding: 4px 4px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi perfil -Sebastian Herrera Rueda</title>
+
+    <meta name="description" content="Portafolio de Sebastian Herrera Rueda, estudiante de Tecnología en
+                 Sistemas Informáticos de la Universidad de Caldas.">
+
+    <meta property="og:title" content="Sebastian Herrera Rueda — Portafolio">
+    <meta property="og:description" content="Proyectos web de Sebastian Herrera Rueda.">
+    <meta property="og:image" content="https://misitio.com/img/tarjeta.png">
+    <meta property="og:type" content="website">
+</head>
+
+<body>
+    <h1>¡Hola, mi nombre es Sebastian Herrera Rueda!</h1>
+    <p>«Es una desgracia para un hombre envejecer sin haber visto la belleza y la fuerza de la que su cuerpo es capaz»
+    </p>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="perfil.html">Perfil</a></li>
+            <li><a href="proyectos.html">Proyectos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Foto punto 3 -->
+        <section>
+            <h2>Sobre mí</h2>
+            <p>Soy estudiante de Tecnología en Sistemas Informáticos en la Universidad de Caldas. Me apasiona el
+                desarrollo web y la programación.</p>
+
+            <figure>
+                <img src="Foto-perfil.jpg" alt="Foto de Sebastian Herrera Rueda" width="300" height="400"
+                    fetchpriority="high" />
+                <figcaption>Foto de Perfil</figcaption>
+            </figure>
+        </section>
+
+        <!-- Tabla punto 4 -->
+
+        <section>
+            <h2>Información</h2>
+            <table style="border: 1px solid black; border-collapse: collapse;">
+                <caption>Datos personales</caption>
+                <thead>
+                    <tr>
+                        <th>Dato</th>
+                        <th>Información</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Institución</td>
+                        <td>Universidad de Caldas</td>
+                    </tr>
+                    <tr>
+                        <td>Título</td>
+                        <td>Tecnología en Sistemas Informáticos</td>
+                    </tr>
+                    <tr>
+                        <td>Año actual de estudio</td>
+                        <td>2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <!-- Listas punto 5 -->
+            <h2>Habilidades</h2>
+
+            <ol>
+                <li>Las tecnologias que conozco son:</li>
+                <li>Java POO</li>
+                <li>Cisco packet tracer</li>
+                <li>Android Studio</li>
+                <li>MySQL</li>
+            </ol>
+
+            <ol>
+                <li>Las habilidades que quiero desarrollar son:</li>
+                <li>Entender la funcionalidad del lenguaje HTML</li>
+                <li>Desarrollar habilidades en CSS</li>
+                <li>Mejorar mi lógica de programación</li>
+            </ol>
+        </section>
+
+        <!-- Formulario punto 6 -->
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <form action="enviar_formulario.php" method="post">
+                <p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="50"
+                        placeholder="Ejemplo: Juan Pérez">
+                </p>
+                <p>
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required minlength="10" maxlength="100"
+                        placeholder="Ejemplo: juan.perez@ucaldas.edu.co">
+                </p>
+                <p>
+                    <label for="asunto">Asunto:</label>
+                    <select id="asunto" name="asunto" required>
+                        <option value="">-- Selecciona --</option>
+                        <option value="1">Información</option>
+                        <option value="2">Sugerencias</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="500"
+                        placeholder="Escribe tu mensaje aquí..."></textarea>
+                </p>
+                <p>
+                    <label for="terminos">
+                        <input type="checkbox" id="terminos" name="terminos" required>
+                        Acepto los términos y condiciones
+                    </label>
+                </p>
+                <button type="submit">Enviar</button>
+
+            </form>
+        </section>
+
+
+
+
+        <section>
+            <h2>Proyectos destacados</h2>
+
+            <ul>
+                <li>
+                    <a href="proyecto1.html">
+                        Proyecto 1: Aplicación web de gestión de tareas
+                    </a>
+                </li>
+                <li>
+                    <a href="proyecto2.html">
+                        Proyecto 2: Blog personal con Django
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; sebastian.herrera64752@ucaldas.edu.co - 2025</p>
+    </footer>
+
+
+
+</body>
+
+</html>

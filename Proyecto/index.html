@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        a {
+            display: inline-block;
+            padding: 4px 4px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PokeApi - Explorador interactivo</title>
+
+    <meta name="description" content="Explora información sobre tus Pokémon favoritos con la PokeApi.">
+
+    <meta property="og:title" content="Explorador de Pokémon — PokeApi">
+    <meta property="og:description" content="Avance proyecto web de Sebastian Herrera Rueda.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png">
+    <meta property="og:type" content="website"> 
+</head>
+
+<header>
+    <h1>Explorador interactivo de Pokémon</h1>
+    <p>¡Bienvenido al explorador interactivo de Pokémon! Aquí puedes buscar información sobre tus Pokémon favoritos utilizando la PokeApi.</p>
+</header>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Favoritos.html">Favoritos</a></li>
+            <li><a href="Acerca de PokeApi.html">Acerca de PokeApi</a></li>
+        </ul>
+    </nav>
+
+    <main>
+    
+        <section>
+            <h2>Buscar Pokemon</h2>
+
+            <form>
+                <p>
+                    <label for="Busqueda">Buscar Pokémon:</label>
+                    <input type="text" 
+                    id="Busqueda" name="busqueda" 
+                    placeholder="Ejemplo: pikachu">
+
+                <p> 
+                    <label for="tipo">Filtrar por tipo:</label>
+                    <select id="filtro" name="filtro">
+                        <option value="">Todos los tipos</option>
+                        <option value="planta">Planta</option>
+                        <option value="veneno">Veneno</option>
+                        <option value="fuego">Fuego</option>
+                        <option value="agua">Agua</option>
+                        <option value="eléctrico">Eléctrico</option>
+                    </select>
+                </p>
+
+                <button type="submit" id="buscar">Buscar</button>
+            </form>
+        </section>
+
+        
+
+        <section>
+            <h2>Resultados de la búsqueda</h2>
+
+            <article>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" 
+            alt="Imagen de Pikachu" 
+            width="200" 
+            height="200">
+            <h2>Nombre: Pikachu</h2>
+            <p>Tipo: Eléctrico</p>
+            </article>
+
+            <article></article>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" 
+            alt="Imagen de Bulbasaur" 
+            width="200" 
+            height="200">
+            <h2>Nombre: Bulbasaur</h2>
+            <p>Tipo: Planta</p>
+            </article>
+
+            <article></article>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" 
+            alt="Imagen de Charmander" 
+            width="200" 
+            height="200">
+            <h2>Nombre: Charmander</h2>
+            <p>Tipo: Fuego</p>
+            </article>
+
+            <article>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" 
+            alt="Imagen de Squirtle" 
+            width="200" 
+            height="200">
+            <h2>Nombre: Squirtle</h2>
+            <p>Tipo: Agua</p>
+            </article>
+
+        </section>
+
+</main>
+
+
+    <footer>
+        <p>&copy; 2025 Sebastian Herrera Rueda.<br>Tecnología en Sistemas Informáticos - Universidad de Caldas</p>
+        <p>Documentación: <a href="https://pokeapi.co/docs/v2" target="_blank">PokeApi Documentation</a></p>
+    </footer>
+
+</body>
+
+</html>
