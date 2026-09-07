@@ -1,3 +1,0 @@
-En este caso elegí la PokeAPI debido a que pokemon es un tema
-con el que me familiarizo debido a que la serie ha formado parte de mi vida
-en diferentes etapas de la misma
