@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Mis lenguajes favoritos</h2>
+    <ul>
+        <li>JavaScript</li>
+        <li>Python</li>
+    </ul>
+
+    <h2>Pasos para compilar</h2>
+    <ol>
+        <li>Instalar dependencias</li>
+        <li>Ejecutar el build</li>
+    </ol>
+
+    <p>Este es un párrafo con <strong>texto en negrita</strong> y <em>texto en cursiva</em>.</p>
+
+    <br>
+
+    <table>
+        <caption>Notas del semestre</caption>
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Nota</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Web 1</td>
+                <td>4.5</td>
+            </tr>
+            <tr>
+                <td>Bases de datos</td>
+                <td>4.0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <figure>
+        <img src="images.jpg" alt="Pokemon = Gengar" width="300">
+        <figcaption>
+            Pokemon = Gengar
+        </figcaption>
+
+    </figure>
+
+    <figure>
+        <img src="img/campus.jpg" alt="Edificio central de la Universidad de Caldas">
+        <figcaption>Campus principal, Manizales.</figcaption>
+    </figure>
+
+    <video src="video/demo.mp4" controls width="640">
+        Tu navegador no soporta video HTML5.
+    </video>
+
+    <form action="/enviar" method="post">
+
+        <!-- Cada campo: un label CONECTADO a su input por for/id -->
+        <p>
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="60"
+                placeholder="Ej: Ana García">
+        </p>
+
+        <!-- type="email" valida el formato automáticamente -->
+        <p>
+            <label for="correo">Correo institucional</label>
+            <input type="email" id="correo" name="correo" required pattern=".+@ucaldas\.edu\.co"
+                title="Debe ser un correo @ucaldas.edu.co">
+        </p>
+
+        <!-- Tipos especializados: el teclado del celular se adapta -->
+        <p>
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" min="15" max="99">
+        </p>
+        <p>
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="nacimiento" name="nacimiento">
+        </p>
+
+        <!-- Lista desplegable -->
+        <p>
+            <label for="semestre">Semestre</label>
+            <select id="semestre" name="semestre" required>
+                <option value="">-- Selecciona --</option>
+                <option value="1">Primero</option>
+                <option value="2">Segundo</option>
+                <option value="3">Tercero o superior</option>
+            </select>
+        </p>
+
+        <!-- Radios: mismo name = solo se elige uno -->
+        <fieldset>
+            <legend>¿Jornada preferida?</legend>
+            <label><input type="radio" name="jornada" value="dia" checked> Diurna</label>
+            <label><input type="radio" name="jornada" value="noche"> Nocturna</label>
+        </fieldset>
+
+        <!-- Área de texto libre -->
+        <p>
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required minlength="10"
+                placeholder="Escribe al menos 10 caracteres"></textarea>
+        </p>
+
+        <!-- Checkbox de aceptación: required obliga a marcarlo -->
+        <p>
+            <label>
+                <input type="checkbox" name="acepta" required>
+                Acepto el tratamiento de mis datos
+            </label>
+        </p>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+
+</html>
