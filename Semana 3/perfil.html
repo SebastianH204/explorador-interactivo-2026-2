@@ -22,10 +22,13 @@
     <meta property="og:description" content="Proyectos web de Sebastian Herrera Rueda.">
     <meta property="og:image" content="https://misitio.com/img/tarjeta.png">
     <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-    <h1>¡Hola, mi nombre es Sebastian Herrera Rueda!</h1>
+    <header>
+        <h1>¡Hola, mi nombre es Sebastian Herrera Rueda!</h1>
+    </header>
     <p>«Es una desgracia para un hombre envejecer sin haber visto la belleza y la fuerza de la que su cuerpo es capaz»
     </p>
 
@@ -41,6 +44,7 @@
     <main>
         <!-- Foto punto 3 -->
         <section>
+            <div class="tarjeta">
             <h2>Sobre mí</h2>
             <p>Soy estudiante de Tecnología en Sistemas Informáticos en la Universidad de Caldas. Me apasiona el
                 desarrollo web y la programación.</p>
@@ -50,16 +54,18 @@
                     fetchpriority="high" />
                 <figcaption>Foto de Perfil</figcaption>
             </figure>
+            </div>
         </section>
 
         <!-- Tabla punto 4 -->
 
         <section>
-            <h2>Información</h2>
-            <table border="1">
-                <caption>Datos personales</caption>
-                <thead>
-                    <tr>
+            <div class="tarjeta">
+                <h2>Información</h2>
+                <table border="1">
+                    <caption>Datos personales</caption>
+                    <thead>
+                        <tr>
                         <th>Dato</th>
                         <th>Información</th>
                     </tr>
@@ -82,6 +88,7 @@
         </section>
 
         <section>
+            <div class="tarjeta"> 
             <!-- Listas punto 5 -->
             <h2>Habilidades</h2>
 
@@ -99,11 +106,13 @@
                 <li>Desarrollar habilidades en CSS</li>
                 <li>Mejorar mi lógica de programación</li>
             </ol>
+            </div>
         </section>
 
         <!-- Formulario punto 6 -->
 
         <section id="contacto">
+            <div class="tarjeta">
             <h2>Contacto</h2>
             <form action="enviar_formulario.php" method="post">
                 <p>
@@ -139,12 +148,14 @@
                 <button type="submit">Enviar</button>
 
             </form>
+            </div>
         </section>
 
 
 
 
         <section>
+            <div class="tarjeta">
             <h2>Proyectos destacados</h2>
 
             <ul>
@@ -159,6 +170,7 @@
                     </a>
                 </li>
             </ul>
+            </div>
         </section>
 
 

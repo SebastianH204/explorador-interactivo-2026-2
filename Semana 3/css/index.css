@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+:root {
+    --color-primario: #1B263B;
+    --texto-primario: #212529;
+    --fondo-primario: #E0E1DD;
+}
+
+
+/*Header de presentación */
+header {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/*Estilo de la barra de navegación */
+nav ul {
+   list-style: none;
+   padding: 0;
+}
+
+ul li a:hover {
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-primario);
+}
+
+/*Borde de la imagen */
+img {
+    border-radius: 50%;
+    border: 4px white solid;
+}
+
+/*Color y estilo de la letra */
+body {
+    font-family: San Francisco, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: var(--fondo-primario);
+    color: var(--texto-primario);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*Estilo de la tarjeta*/
+
+.tarjeta{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+
+}
+
+
+/*Tabla con efecto cebra*/
+
+table{
+    border-collapse: collapse;
+}
+th{
+    background-color: var(--color-primario);
+    color: white;
+}
+
+th,
+    td{
+        padding: 10px;
+    }
+
+tr:nth-child(even){
+    background-color: var(--color-primario);
+    color: white;
+}
+
+/*Formulario*/
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-primario);
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+input:not(:focus):invalid {
+    border-color: red;
+}
+
+button[type="submit"] {
+    background-color: var(--color-primario);
+    color: var(--fondo-primario);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primario-oscuro);
+}
+
+/* Pruebas de especificidad - Borrar después */
+p {
+    color: purple;
+}
