@@ -131,7 +131,3 @@ button[type="submit"]:hover {
     background-color: var(--primario-oscuro);
 }
 
-/* Pruebas de especificidad - Borrar después */
-p {
-    color: purple;
-}
