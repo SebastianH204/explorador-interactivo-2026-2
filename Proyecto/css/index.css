@@ -3,8 +3,8 @@
 }
 
 :root {
-    --primario: #212529;          /* Gris muy oscuro / Casi negro */
-    --primario-oscuro: #000000;   /* Negro puro para hovers */
+    --primario: #EF5350;          /* Gris muy oscuro / Casi negro */
+    --primario-oscuro: #C62828;   /* Negro puro para hovers */
     --secundario: #6c757d;        /* Gris medio */
     --texto: #343a40;             /* Gris oscuro para texto */
     --borde: #dee2e6;             /* Gris claro para bordes */
