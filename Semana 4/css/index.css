@@ -1,0 +1,15 @@
+.pagina {
+  display: grid;
+  gap: 10px;
+  min-height: 320px;
+
+  grid-template-columns: 1fr;
+
+  grid-template-rows: auto auto 1fr auto;
+
+  grid-template-areas:
+    "cabecera"
+    "lateral"
+    "contenido"
+    "pie";
+}

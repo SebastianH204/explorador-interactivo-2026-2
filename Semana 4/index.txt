@@ -1,0 +1,30 @@
+Experimento 1 · La última fila
+Con Flexbox, cuando queda una tarjeta sola en la última fila, esta se estira y ocupa casi todo el espacio que queda disponible. Por eso se ve diferente a las tarjetas que están en las filas anteriores.
+Con Grid esto no pasa de la misma forma, porque mantiene las columnas organizadas y la tarjeta que queda sola conserva el espacio de su columna.
+El que deja las columnas mejor alineadas es Grid, ya que mantiene la misma estructura entre las filas.
+Yo usaría Flex cuando quiero que los elementos se acomoden de forma más libre y que aprovechen el espacio disponible, por ejemplo para botones o menús donde no sea tan importante que las columnas queden alineadas.
+
+Experimento 2 · El eje que se voltea
+Al principio, como Flexbox está trabajando en fila, justify-content se encarga de centrar los elementos horizontalmente y align-items trabaja verticalmente.
+Cuando agrego flex-direction: column, esto cambia. Ahora justify-content trabaja verticalmente y align-items horizontalmente.
+Entonces entendí que no se puede decir simplemente que justify-content siempre es horizontal y align-items siempre es vertical. Depende de cómo esté configurado el eje de Flexbox.
+La regla sería:
+justify-content trabaja sobre el eje principal y align-items sobre el eje secundario.
+
+Experimento 3 · La palabra que rompe el layout
+Cuando puse una palabra demasiado larga, la tarjeta empezó a afectar el tamaño de la columna porque el navegador intentaba mostrar toda la palabra sin cortarla.
+Esto puede ser un problema en una página que recibe datos de una API, porque uno no sabe qué tan largos pueden ser los nombres o enlaces.
+Probé las tres opciones y la que más me gustó fue overflow-wrap: break-word, porque permite que la palabra se divida y evita que se salga de la tarjeta.
+Creo que esta sería la opción que usaría en mi proyecto para evitar que un nombre o una URL muy larga dañe el diseño.
+
+Experimento 4 · Mover cosas sin tocar el HTML
+No tuve que cambiar ninguna línea del HTML. Solo cambié el CSS de Grid para mover el lateral de un lado al otro y después ponerlo arriba.
+Con grid-template-areas se puede cambiar fácilmente la distribución de los elementos sin tener que moverlos dentro del HTML.
+Si lo hiciera con float o con posicionamiento absoluto tendría que hacer más ajustes para controlar dónde queda cada elemento y probablemente sería más difícil mantener todo organizado.
+Me parece especialmente útil para hacer el diseño móvil, porque puedo cambiar la distribución de la página dependiendo del tamaño de la pantalla sin tener que cambiar el HTML.
+
+Experimento 5 · GAP vs MARGIN
+Con margin noté que el espacio se agrega alrededor de cada tarjeta, así que también queda espacio entre las tarjetas y el borde de la sección.
+Con gap, en cambio, el espacio se coloca solamente entre las tarjetas. El contenedor no queda con ese espacio adicional alrededor de los elementos.
+El que puede necesitar reglas adicionales para el primero y el último elemento es margin, porque si no quiero que tengan espacio en los bordes tendría que modificar esos elementos por separado.
+Para separar elementos dentro de Flexbox o Grid, me parece más cómodo usar gap porque simplemente digo cuánto espacio quiero entre ellos y no tengo que estar ajustando cada tarjeta.

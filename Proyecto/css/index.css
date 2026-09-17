@@ -40,6 +40,15 @@ header {
     box-shadow: 0 4px 12px var(--sombra);
 }
 
+
+header a {
+    margin: 0;
+    color: var(--texto);
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 header img {
     width: 100px;
     height: 100px;
@@ -177,6 +186,7 @@ label {
     color: var(--primario);
 }
 
+input[type="search"],
 input[type="text"],
 select,
 textarea {
