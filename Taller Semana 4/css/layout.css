@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+
+    display: grid;
+
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+
+    grid-template-areas:
+        "cabecera cabecera"
+        "filtros resultados"
+        "pie pie";
+}
+
+
+
+.cabecera {
+    grid-area: cabecera;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+    padding: 15px 25px;
+
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.buscador {
+    flex: 1;
+    max-width: 600px;
+
+    padding: 10px;
+}
+
+.menu {
+    display: flex;
+
+    gap: 15px;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+
+
+.filtros {
+    grid-area: filtros;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+    padding: 20px;
+
+    background: white;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+
+
+.resultados {
+    grid-area: resultados;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+
+    padding: 15px;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 200px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.tarjeta button {
+    margin-top: auto;
+
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+.precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+
+
+.pie {
+    grid-area: pie;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+    padding: 25px;
+
+    background: white;
+    border-top: 1px solid #ddd;
+}
+
+.pie div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
