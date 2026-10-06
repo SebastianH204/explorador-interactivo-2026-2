@@ -1,0 +1,71 @@
+PARCIAL 1 - ENTORNOS WEB I
+Parte A
+
+1. HTTP y la web
+
+a) El 404 quiere decir que la imagen no se encontró. O sea, el servidor sí contestó, pero le dijo al navegador "eso que me pides no está aquí".
+Yo diría que el problema es del lado del cliente, porque los errores que empiezan por 4 son cuando se pide algo mal. El servidor está funcionando bien, porque la página sí cargó y hasta respondió con un código. Si el problema fuera del servidor saldría un error que empieza por 5, y si no hubiera internet no saldría ningún número.
+Casi siempre pasa porque la ruta de la imagen quedó mal escrita o porque la imagen nunca se subió.
+
+b) Lo primero que miraría es la dirección (la URL) de la imagen que falló, que se ve dándole clic en Network.
+Esa dirección la compararía con la carpeta donde de verdad está guardada la imagen y con lo que puse en el src del <img>. Ahí uno se da cuenta si se equivocó de carpeta, si el nombre tiene mayúsculas distintas (Foto.JPG no es igual a foto.jpg) o si la imagen es .png y puse .jpg.
+
+
+2. HTML semántico
+
+
+<header>
+    <h1>Mi blog</h1>
+</header>
+<nav>...</nav>
+<main>
+    <article>
+        <h2>Mi viaje</h2>
+        <p>...</p>
+    </article>
+</main>
+
+Por qué lo hice así:
+1. El post lo puse en un <article> porque es una publicación completa, que se entiende sola. Así el navegador, Google y los lectores de pantalla saben qué es, y no es solo un div más.
+2. El "titulo-grande" lo cambié por un <h2> porque los títulos van por orden de importancia, no por lo grandes que se vean (eso se arregla con CSS). El nombre del blog es lo principal, entonces va en h1, y el título del post va debajo en h2.
+
+
+3. Especificidad
+
+
+Para saber cuál gana conté cuántos id, clases y etiquetas tiene cada regla:
+p           -> 0 id, 0 clases, 1 etiqueta  = negro
+.destacado  -> 0 id, 1 clase,  0 etiquetas = naranja
+p.destacado -> 0 id, 1 clase,  1 etiqueta  = morado
+#zona p     -> 1 id, 0 clases, 1 etiqueta  = verde
+
+a) El texto se ve verde. #zona p es la única que tiene un id, y el id pesa más que todo lo demás. No importa en qué orden estén escritas, eso solo sirve cuando dos reglas pesan lo mismo.
+
+b) Si quito #zona p, queda morado. p.destacado gana porque tiene la clase y además la etiqueta, entonces pesa un poquito más que .destacado solo, y las dos le ganan a p.
+
+
+4. Box model
+
+a)
+Con content-box: 300 + 24 + 24 + 2 + 2 = 352px. El relleno y el borde se le suman por fuera.
+Con border-box: se queda en 300px. El relleno y el borde se meten por dentro y el espacio del contenido se achica a 248px.
+El margin no lo cuento en ninguno porque es el espacio que queda afuera de la caja.
+
+b) Porque con border-box lo que uno pone en width es lo que de verdad mide la caja. Si después le agrego relleno o borde, no se agranda ni se me descuadra todo.
+Se pone con el * para que le aplique a todos los elementos, porque eso no se pasa solo de un elemento a otro. Y el ::before y ::after también van porque también son cajas.
+
+
+5. Flexbox, Grid y responsive
+
+a) La diferencia se nota cuando en la última fila no alcanzan a llenar el espacio. Por ejemplo, con 7 tarjetas donde caben 4 por fila:
+
+Propuesta A (flex)            Propuesta B (grid)
+[ 1 ][ 2 ][ 3 ][ 4 ]          [ 1 ][ 2 ][ 3 ][ 4 ]
+[   5   ][   6   ][   7   ]   [ 5 ][ 6 ][ 7 ][   ]
+
+Con flex, las tarjetas que quedan solas abajo se estiran y quedan más anchas que las de arriba.
+Con grid, todas quedan del mismo tamaño y en columna, y simplemente queda un espacio vacío al final.
+
+b) Yo usaría la B, la de grid, porque en una grilla de tarjetas lo bonito es que todas queden del mismo tamaño y bien alineadas, y grid lo hace solo sin tener que poner media queries.
+Flex lo dejaría para cosas como un menú o una fila de botones.
+Algo que noté: ninguna de las dos se queda en máximo 4 columnas. Si la pantalla es muy ancha salen 5 o más, entonces toca ponerle un ancho máximo al contenedor.
