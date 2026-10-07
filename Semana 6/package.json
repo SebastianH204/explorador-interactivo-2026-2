@@ -1,0 +1,14 @@
+{
+  "name": "semana-6",
+  "version": "1.0.0",
+  "description": "Kit de componentes del Explorador con Tailwind CSS v4",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/entrada.css -o ./css/tailwind.css --watch"
+  },
+  "author": "Sebastian Herrera Rueda",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

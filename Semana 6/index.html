@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéKit - Taller semana 6</title>
+    <meta name="description" content="Kit de componentes de mi explorador de Pokémon con Tailwind CSS.">
+    <link rel="stylesheet" href="css/tailwind.css">
+</head>
+
+<body class="bg-slate-100 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+
+    <header class="sticky top-0 z-10 bg-white shadow dark:bg-slate-900">
+        <nav class="relative mx-auto flex max-w-6xl items-center justify-between p-4">
+            <a href="#" class="text-xl font-bold text-indigo-600">
+                Poké<span class="text-slate-900 dark:text-white">Kit</span>
+            </a>
+
+            <button id="btn-menu" type="button"
+                class="rounded-lg p-2 text-2xl hover:bg-slate-100 md:hidden dark:hover:bg-slate-700"
+                aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">☰</button>
+
+            <ul id="menu"
+                class="absolute top-full right-0 left-0 hidden flex-col gap-1 bg-white p-4 shadow-lg
+                       md:static md:flex md:flex-row md:gap-6 md:bg-transparent md:p-0 md:shadow-none
+                       dark:bg-slate-900">
+                <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-slate-100 md:p-0 md:hover:bg-transparent md:hover:text-indigo-600 dark:hover:bg-slate-700">Pokémon</a></li>
+                <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-slate-100 md:p-0 md:hover:bg-transparent md:hover:text-indigo-600 dark:hover:bg-slate-700">Tipos</a></li>
+                <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-slate-100 md:p-0 md:hover:bg-transparent md:hover:text-indigo-600 dark:hover:bg-slate-700">Favoritos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <form class="mx-auto flex max-w-3xl flex-col gap-3 p-4 md:flex-row" role="search">
+        <label for="busqueda" class="sr-only">Buscar Pokémon</label>
+        <input id="busqueda" name="busqueda" type="search" placeholder="Buscar por nombre…" minlength="2"
+            class="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 user-invalid:border-rose-500">
+
+        <label for="filtro-tipo" class="sr-only">Filtrar por tipo</label>
+        <select id="filtro-tipo" name="tipo" class="rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800">
+            <option value="">Todos los tipos</option>
+            <option value="grass">Planta</option>
+            <option value="poison">Veneno</option>
+            <option value="fire">Fuego</option>
+            <option value="water">Agua</option>
+            <option value="electric">Eléctrico</option>
+            <option value="ghost">Fantasma</option>
+            <option value="psychic">Psíquico</option>
+            <option value="normal">Normal</option>
+            <option value="fighting">Lucha</option>
+            <option value="ice">Hielo</option>
+        </select>
+
+        <button type="submit"
+            class="rounded-lg bg-indigo-600 px-5 py-2 font-semibold text-white transition
+                   hover:bg-indigo-700 active:scale-95
+                   disabled:cursor-not-allowed disabled:bg-slate-300">
+            Buscar
+        </button>
+    </form>
+
+    <section class="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-4" aria-label="Resultados">
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="Bulbasaur"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#001</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Bulbasaur</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-green-100 text-green-700 px-2.5 py-0.5 text-xs font-semibold">Planta</span>
+                    <span class="rounded-full bg-purple-100 text-purple-700 px-2.5 py-0.5 text-xs font-semibold">Veneno</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 0.7 m · Peso 6.9 kg</p>
+                <button type="button"
+                    data-nombre="Bulbasaur" data-numero="#001" data-tipo="Planta, Veneno"
+                    data-altura="0.7 m" data-peso="6.9 kg" data-habilidades="Overgrow, Chlorophyll"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="Charmander"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#004</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Charmander</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-orange-100 text-orange-700 px-2.5 py-0.5 text-xs font-semibold">Fuego</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 0.6 m · Peso 8.5 kg</p>
+                <button type="button"
+                    data-nombre="Charmander" data-numero="#004" data-tipo="Fuego"
+                    data-altura="0.6 m" data-peso="8.5 kg" data-habilidades="Blaze, Solar Power"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" alt="Squirtle"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#007</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Squirtle</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-sky-100 text-sky-700 px-2.5 py-0.5 text-xs font-semibold">Agua</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 0.5 m · Peso 9 kg</p>
+                <button type="button"
+                    data-nombre="Squirtle" data-numero="#007" data-tipo="Agua"
+                    data-altura="0.5 m" data-peso="9 kg" data-habilidades="Torrent, Rain Dish"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#025</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pikachu</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-yellow-100 text-yellow-700 px-2.5 py-0.5 text-xs font-semibold">Eléctrico</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 0.4 m · Peso 6 kg</p>
+                <button type="button"
+                    data-nombre="Pikachu" data-numero="#025" data-tipo="Eléctrico"
+                    data-altura="0.4 m" data-peso="6 kg" data-habilidades="Static, Lightning Rod"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png" alt="Gengar"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#094</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Gengar</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-violet-100 text-violet-700 px-2.5 py-0.5 text-xs font-semibold">Fantasma</span>
+                    <span class="rounded-full bg-purple-100 text-purple-700 px-2.5 py-0.5 text-xs font-semibold">Veneno</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 1.5 m · Peso 40.5 kg</p>
+                <button type="button"
+                    data-nombre="Gengar" data-numero="#094" data-tipo="Fantasma, Veneno"
+                    data-altura="1.5 m" data-peso="40.5 kg" data-habilidades="Cursed Body"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/94.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png" alt="Snorlax"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#143</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Snorlax</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-stone-200 text-stone-700 px-2.5 py-0.5 text-xs font-semibold">Normal</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 2.1 m · Peso 460 kg</p>
+                <button type="button"
+                    data-nombre="Snorlax" data-numero="#143" data-tipo="Normal"
+                    data-altura="2.1 m" data-peso="460 kg" data-habilidades="Immunity, Thick Fat, Gluttony"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png" alt="Mewtwo"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#150</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Mewtwo</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-pink-100 text-pink-700 px-2.5 py-0.5 text-xs font-semibold">Psíquico</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 2 m · Peso 122 kg</p>
+                <button type="button"
+                    data-nombre="Mewtwo" data-numero="#150" data-tipo="Psíquico"
+                    data-altura="2 m" data-peso="122 kg" data-habilidades="Pressure, Unnerve"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+        <article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow transition
+                        hover:-translate-y-1 hover:shadow-xl dark:bg-slate-800">
+            <div class="overflow-hidden bg-slate-100 dark:bg-slate-700">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/740.png" alt="Crabominable"
+                    class="aspect-square w-full object-contain p-4 transition group-hover:scale-105">
+            </div>
+            <div class="flex flex-1 flex-col gap-2 p-4">
+                <p class="text-xs font-semibold text-slate-400">#740</p>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Crabominable</h3>
+                <div class="flex gap-2">
+                    <span class="rounded-full bg-red-100 text-red-700 px-2.5 py-0.5 text-xs font-semibold">Lucha</span>
+                    <span class="rounded-full bg-cyan-100 text-cyan-700 px-2.5 py-0.5 text-xs font-semibold">Hielo</span>
+                </div>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Altura 1.7 m · Peso 180 kg</p>
+                <button type="button"
+                    data-nombre="Crabominable" data-numero="#740" data-tipo="Lucha, Hielo"
+                    data-altura="1.7 m" data-peso="180 kg" data-habilidades="Hyper Cutter, Iron Fist, Anger Point"
+                    data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/740.png"
+                    class="btn-detalle mt-auto rounded-lg bg-indigo-600 py-2 font-semibold text-white transition
+                           hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2
+                           focus-visible:outline-indigo-600">
+                    Ver detalle
+                </button>
+            </div>
+        </article>
+
+    </section>
+
+    <dialog id="modal-detalle" aria-labelledby="modal-nombre"
+        class="m-auto w-full max-w-md overflow-hidden rounded-2xl bg-white p-0 text-slate-900 shadow-2xl
+               backdrop:bg-slate-900/60 backdrop:backdrop-blur-sm
+               dark:bg-slate-800 dark:text-white">
+        <img id="modal-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu"
+            class="aspect-square w-full bg-slate-100 object-contain p-6 dark:bg-slate-700">
+        <div class="space-y-4 p-6">
+            <h2 id="modal-nombre" class="text-2xl font-bold">Pikachu</h2>
+            <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                <dt class="text-slate-500 dark:text-slate-400">Número</dt>
+                <dd id="modal-numero" class="font-medium">#025</dd>
+                <dt class="text-slate-500 dark:text-slate-400">Tipo</dt>
+                <dd id="modal-tipo" class="font-medium">Eléctrico</dd>
+                <dt class="text-slate-500 dark:text-slate-400">Altura</dt>
+                <dd id="modal-altura" class="font-medium">0.4 m</dd>
+                <dt class="text-slate-500 dark:text-slate-400">Peso</dt>
+                <dd id="modal-peso" class="font-medium">6 kg</dd>
+                <dt class="text-slate-500 dark:text-slate-400">Habilidades</dt>
+                <dd id="modal-habilidades" class="font-medium">Static, Lightning Rod</dd>
+            </dl>
+            <form method="dialog">
+                <button class="w-full rounded-lg border border-slate-300 py-2 font-semibold hover:bg-slate-100
+                               dark:border-slate-600 dark:hover:bg-slate-700">
+                    Cerrar
+                </button>
+            </form>
+        </div>
+    </dialog>
+
+    <footer class="py-6 text-center text-sm text-slate-500 dark:text-slate-400">
+        Datos de <a href="https://pokeapi.co" target="_blank" class="font-semibold text-indigo-600 hover:underline dark:text-indigo-400">PokéAPI</a>
+    </footer>
+
+    <script>
+        const btnMenu = document.getElementById('btn-menu');
+        const menu = document.getElementById('menu');
+
+        btnMenu.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+            const abierto = !menu.classList.contains('hidden');
+            btnMenu.setAttribute('aria-expanded', abierto);
+        });
+
+        const modal = document.getElementById('modal-detalle');
+
+        document.querySelectorAll('.btn-detalle').forEach(function (boton) {
+            boton.addEventListener('click', function () {
+                const datos = boton.dataset;
+                document.getElementById('modal-nombre').textContent = datos.nombre;
+                document.getElementById('modal-img').src = datos.imagen;
+                document.getElementById('modal-img').alt = datos.nombre;
+                document.getElementById('modal-numero').textContent = datos.numero;
+                document.getElementById('modal-tipo').textContent = datos.tipo;
+                document.getElementById('modal-altura').textContent = datos.altura;
+                document.getElementById('modal-peso').textContent = datos.peso;
+                document.getElementById('modal-habilidades').textContent = datos.habilidades;
+                modal.showModal();
+            });
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) modal.close();
+        });
+    </script>
+
+</body>
+
+</html>
