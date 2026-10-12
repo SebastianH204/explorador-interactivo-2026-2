@@ -2,12 +2,6 @@
 <html lang="es">
 
 <head>
-    <style>
-        a {
-            display: inline-block;
-            padding: 4px 4px;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,101 +13,368 @@
     <meta property="og:description" content="Avance proyecto web de Sebastian Herrera Rueda.">
     <meta property="og:image" content="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png">
     <meta property="og:type" content="website">
-    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="stylesheet" href="css/tailwind.css">
 </head>
 
-<header>
-    <h1>Explorador interactivo de Pokémon</h1>
-    <p>¡Bienvenido al explorador interactivo de Pokémon! Aquí puedes buscar información sobre tus Pokémon favoritos
-        utilizando la PokeApi.</p>
-</header>
 
-<body>
+<body class="flex min-h-screen flex-col bg-gray-50 leading-relaxed text-gray-700 dark:bg-gray-900 dark:text-gray-100">
 
-    <header class="navbar">
-        <a class="logo" href="#">PokeSearch</a>
-        <input class="buscador" type="search" placeholder="Buscar Pokemon…" aria-label="Buscar">
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="Favoritos.html">Favoritos</a></li>
-                <li><a href="https://pokeapi.co/docs/v2">Acerca de PokeApi</a></li>
+    <!-- ===== navbar ===== -->
+    <header class="sticky top-0 z-10 bg-[#EF5350] shadow">
+        <nav class="relative mx-auto flex max-w-6xl items-center justify-between p-4">
+
+            <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-white">
+                <img src="pokeapi.jpg" alt="Logo PokeApi" class="h-9 w-auto rounded-lg bg-white p-1">
+                PokeSearch
+            </a>
+
+            <button id="btn-menu" type="button"
+                class="rounded-lg p-2 text-2xl text-white hover:bg-[#C62828] md:hidden"
+                aria-label="Abrir menú" aria-controls="menu" aria-expanded="false">☰</button>
+
+            <ul id="menu"
+                class="absolute top-full right-0 left-0 hidden flex-col gap-2 bg-[#EF5350] p-4 shadow-lg
+                       md:static md:flex md:flex-row md:gap-2 md:bg-transparent md:p-0 md:shadow-none">
+                <li>
+                    <a href="index.html"
+                        class="block rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#EF5350]
+                               transition hover:border-[#C62828] hover:bg-[#C62828] hover:text-white">Inicio</a>
+                </li>
+                <li>
+                    <a href="#"
+                        class="block rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#EF5350]
+                               transition hover:border-[#C62828] hover:bg-[#C62828] hover:text-white">Favoritos</a>
+                </li>
+                <li>
+                    <a href="https://pokeapi.co/docs/v2" target="_blank"
+                        class="block rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#EF5350]
+                               transition hover:border-[#C62828] hover:bg-[#C62828] hover:text-white">Acerca de PokeApi</a>
+                </li>
             </ul>
-        </nav>
 
+        </nav>
     </header>
 
+    <main class="mx-auto w-full max-w-6xl flex-1 px-4">
 
-    <main>
+        <!-- ===== bienvenida ===== -->
+        <section class="my-4 rounded-xl bg-[#EF5350] px-4 py-6 text-center text-white shadow sm:p-8">
+            <img src="pokeapi.jpg" alt="Logo PokeApi"
+                class="mx-auto mb-2 h-20 w-auto rounded-xl border-4 border-white bg-white">
+            <h1 class="my-2 text-2xl font-bold sm:text-3xl">Explorador interactivo de Pokémon</h1>
+            <p class="text-sm text-gray-100">¡Bienvenido al explorador interactivo de Pokémon! Aquí puedes buscar
+                información sobre tus Pokémon favoritos utilizando la PokeApi.</p>
+        </section>
 
-        <section>
-            <h2>Buscar Pokemon</h2>
+        <section class="mb-6 rounded-xl border border-gray-200 bg-white p-5 shadow dark:border-gray-600 dark:bg-gray-800">
+            <h2 class="mb-5 border-b-2 border-gray-200 pb-2 text-xl font-bold text-[#EF5350] dark:border-gray-600">
+                Buscar Pokémon
+            </h2>
 
-            <form>
-                <p>
-                    <label for="Busqueda">Buscar Pokémon:</label>
-                    <input type="text" id="Busqueda" name="busqueda" placeholder="Ejemplo: pikachu">
+            <form class="grid grid-cols-1 gap-4 md:grid-cols-3 md:items-end" role="search">
 
-                <p>
-                    <label for="tipo">Filtrar por tipo:</label>
-                    <select id="filtro" name="filtro">
+                <div>
+                    <label for="busqueda" class="mb-1 block font-semibold text-[#EF5350]">Buscar Pokémon:</label>
+                    <input type="search" id="busqueda" name="busqueda" placeholder="Ejemplo: pikachu" minlength="2"
+                        class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-gray-700
+                               focus:border-[#EF5350] focus:ring-2 focus:ring-red-200 focus:outline-none
+                               user-invalid:border-red-600
+                               dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+                </div>
+
+                <div>
+                    <label for="filtro" class="mb-1 block font-semibold text-[#EF5350]">Filtrar por tipo:</label>
+                    <select id="filtro" name="filtro"
+                        class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-gray-700
+                               focus:border-[#EF5350] focus:ring-2 focus:ring-red-200 focus:outline-none
+                               dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
                         <option value="">Todos los tipos</option>
-                        <option value="planta">Planta</option>
-                        <option value="veneno">Veneno</option>
-                        <option value="fuego">Fuego</option>
-                        <option value="agua">Agua</option>
-                        <option value="eléctrico">Eléctrico</option>
+                        <option value="grass">Planta</option>
+                        <option value="poison">Veneno</option>
+                        <option value="fire">Fuego</option>
+                        <option value="water">Agua</option>
+                        <option value="electric">Eléctrico</option>
+                        <option value="ghost">Fantasma</option>
+                        <option value="psychic">Psíquico</option>
+                        <option value="normal">Normal</option>
+                        <option value="fighting">Lucha</option>
+                        <option value="ice">Hielo</option>
                     </select>
-                </p>
+                </div>
 
-                <button type="submit" id="buscar">Buscar</button>
+                <button type="submit" id="buscar"
+                    class="w-full rounded-lg bg-[#EF5350] px-6 py-2.5 font-semibold text-white transition
+                           hover:bg-[#C62828] active:scale-95
+                           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]
+                           disabled:cursor-not-allowed disabled:bg-gray-300">
+                    Buscar
+                </button>
+
             </form>
         </section>
 
+        <section class="mb-8">
+            <h2 class="mb-5 border-b-2 border-gray-200 pb-2 text-xl font-bold text-[#EF5350] dark:border-gray-600">
+                Resultados de la búsqueda
+            </h2>
 
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
-        <section class="tarjeta">
-            <h2>Resultados de la búsqueda</h2>
+                <!-- tarjeta 1 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                        alt="Imagen de Pikachu"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Pikachu</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-semibold text-yellow-700">Eléctrico</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 0.4 m · Peso 6 kg</p>
+                    <button type="button"
+                        data-nombre="Pikachu" data-numero="#025" data-tipo="Eléctrico"
+                        data-altura="0.4 m" data-peso="6 kg" data-habilidades="Static, Lightning Rod"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
-            <article class="tarjeta">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-                    alt="Imagen de Pikachu">
-                <h3>Nombre: Pikachu</h3>
-                <p>Tipo: Eléctrico</p>
-            </article>
+                <!-- tarjeta 2 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                        alt="Imagen de Bulbasaur"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Bulbasaur</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-700">Planta</span>
+                        <span class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-semibold text-purple-700">Veneno</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 0.7 m · Peso 6.9 kg</p>
+                    <button type="button"
+                        data-nombre="Bulbasaur" data-numero="#001" data-tipo="Planta, Veneno"
+                        data-altura="0.7 m" data-peso="6.9 kg" data-habilidades="Overgrow, Chlorophyll"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
-            <article class="tarjeta">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-                    alt="Imagen de Bulbasaur">
-                <h3>Nombre: Bulbasaur</h3>
-                <p>Tipo: Planta</p>
-            </article>
+                <!-- tarjeta 3 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                        alt="Imagen de Charmander"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Charmander</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-orange-700">Fuego</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 0.6 m · Peso 8.5 kg</p>
+                    <button type="button"
+                        data-nombre="Charmander" data-numero="#004" data-tipo="Fuego"
+                        data-altura="0.6 m" data-peso="8.5 kg" data-habilidades="Blaze, Solar Power"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
-            <article class="tarjeta">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-                    alt="Imagen de Charmander">
-                <h3>Nombre: Charmander</h3>
-                <p>Tipo: Fuego</p>
-            </article>
+                <!-- tarjeta 4 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+                        alt="Imagen de Squirtle"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Squirtle</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-sky-100 px-2.5 py-0.5 text-xs font-semibold text-sky-700">Agua</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 0.5 m · Peso 9 kg</p>
+                    <button type="button"
+                        data-nombre="Squirtle" data-numero="#007" data-tipo="Agua"
+                        data-altura="0.5 m" data-peso="9 kg" data-habilidades="Torrent, Rain Dish"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
-            <article class="tarjeta">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
-                    alt="Imagen de Squirtle">
-                <h3>Nombre: Squirtle</h3>
-                <p>Tipo: Agua</p>
-            </article>
+                <!-- tarjeta 5 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"
+                        alt="Imagen de Gengar"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Gengar</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-violet-100 px-2.5 py-0.5 text-xs font-semibold text-violet-700">Fantasma</span>
+                        <span class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-semibold text-purple-700">Veneno</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 1.5 m · Peso 40.5 kg</p>
+                    <button type="button"
+                        data-nombre="Gengar" data-numero="#094" data-tipo="Fantasma, Veneno"
+                        data-altura="1.5 m" data-peso="40.5 kg" data-habilidades="Cursed Body"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
+                <!-- tarjeta 6 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
+                        alt="Imagen de Snorlax"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Snorlax</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-stone-200 px-2.5 py-0.5 text-xs font-semibold text-stone-700">Normal</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 2.1 m · Peso 460 kg</p>
+                    <button type="button"
+                        data-nombre="Snorlax" data-numero="#143" data-tipo="Normal"
+                        data-altura="2.1 m" data-peso="460 kg" data-habilidades="Immunity, Thick Fat, Gluttony"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
+                <!-- tarjeta 7 -->
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+                        alt="Imagen de Mewtwo"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Mewtwo</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-pink-100 px-2.5 py-0.5 text-xs font-semibold text-pink-700">Psíquico</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 2 m · Peso 122 kg</p>
+                    <button type="button"
+                        data-nombre="Mewtwo" data-numero="#150" data-tipo="Psíquico"
+                        data-altura="2 m" data-peso="122 kg" data-habilidades="Pressure, Unnerve"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
 
+                <article class="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 text-center shadow transition
+                                hover:-translate-y-1 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/740.png"
+                        alt="Imagen de Crabominable"
+                        class="mx-auto h-28 w-28 rounded-full border-4 border-gray-200 bg-gray-50 transition group-hover:scale-110
+                               dark:border-gray-600 dark:bg-gray-700">
+                    <h3 class="mt-3 text-lg font-bold text-[#EF5350]">Crabominable</h3>
+                    <div class="my-2 flex justify-center gap-2">
+                        <span class="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-semibold text-red-700">Lucha</span>
+                        <span class="rounded-full bg-cyan-100 px-2.5 py-0.5 text-xs font-semibold text-cyan-700">Hielo</span>
+                    </div>
+                    <p class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">Altura 1.7 m · Peso 180 kg</p>
+                    <button type="button"
+                        data-nombre="Crabominable" data-numero="#740" data-tipo="Lucha, Hielo"
+                        data-altura="1.7 m" data-peso="180 kg" data-habilidades="Hyper Cutter, Iron Fist, Anger Point"
+                        data-imagen="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/740.png"
+                        class="btn-detalle mt-auto w-full rounded-lg bg-[#EF5350] py-2.5 font-semibold text-white transition
+                               hover:bg-[#C62828] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF5350]">
+                        Ver detalle
+                    </button>
+                </article>
+
+            </div>
         </section>
 
     </main>
 
+    <dialog id="modal-detalle" aria-labelledby="modal-nombre"
+        class="m-auto w-full max-w-md overflow-hidden rounded-2xl bg-white p-0 text-gray-700 shadow-2xl
+               backdrop:bg-gray-900/60 backdrop:backdrop-blur-sm
+               dark:bg-gray-800 dark:text-gray-100">
+        <div class="bg-[#EF5350] p-6">
+            <img id="modal-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+                alt="Imagen de Pikachu"
+                class="mx-auto h-40 w-40 rounded-full border-4 border-white bg-gray-50 dark:bg-gray-700">
+        </div>
+        <div class="space-y-4 p-6">
+            <h2 id="modal-nombre" class="text-center text-2xl font-bold text-[#EF5350]">Pikachu</h2>
+            <dl class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                <dt class="text-gray-500 dark:text-gray-400">Número</dt>
+                <dd id="modal-numero" class="font-medium">#025</dd>
+                <dt class="text-gray-500 dark:text-gray-400">Tipo</dt>
+                <dd id="modal-tipo" class="font-medium">Eléctrico</dd>
+                <dt class="text-gray-500 dark:text-gray-400">Altura</dt>
+                <dd id="modal-altura" class="font-medium">0.4 m</dd>
+                <dt class="text-gray-500 dark:text-gray-400">Peso</dt>
+                <dd id="modal-peso" class="font-medium">6 kg</dd>
+                <dt class="text-gray-500 dark:text-gray-400">Habilidades</dt>
+                <dd id="modal-habilidades" class="font-medium">Static, Lightning Rod</dd>
+            </dl>
+            <form method="dialog">
+                <button class="w-full rounded-lg border border-gray-200 py-2 font-semibold text-[#EF5350] transition
+                               hover:border-[#C62828] hover:bg-[#C62828] hover:text-white dark:border-gray-600">
+                    Cerrar
+                </button>
+            </form>
+        </div>
+    </dialog>
 
-    <footer>
-        <p>&copy; 2025 Sebastian Herrera Rueda.<br>Tecnología en Sistemas Informáticos - Universidad de Caldas</p>
-        <p>Documentación: <a href="https://pokeapi.co/docs/v2" target="_blank">PokeApi Documentation</a></p>
+    <footer class="mx-auto w-full max-w-6xl border-t border-gray-200 px-4 py-6 text-center text-sm text-gray-500
+                   dark:border-gray-600 dark:text-gray-400">
+        <p>&copy; 2026 Sebastian Herrera Rueda.<br>Tecnología en Sistemas Informáticos - Universidad de Caldas</p>
+        <p>Documentación: <a href="https://pokeapi.co/docs/v2" target="_blank"
+                class="font-semibold text-[#EF5350] hover:underline">PokeApi Documentation</a></p>
     </footer>
+
+    <script>
+        const btnMenu = document.getElementById('btn-menu');
+        const menu = document.getElementById('menu');
+
+        btnMenu.addEventListener('click', function () {
+            menu.classList.toggle('hidden');
+            const abierto = !menu.classList.contains('hidden');
+            btnMenu.setAttribute('aria-expanded', abierto);
+        });
+
+        const modal = document.getElementById('modal-detalle');
+        const botonesDetalle = document.querySelectorAll('.btn-detalle');
+
+        botonesDetalle.forEach(function (boton) {
+            boton.addEventListener('click', function () {
+                const datos = boton.dataset;
+                document.getElementById('modal-nombre').textContent = datos.nombre;
+                document.getElementById('modal-img').src = datos.imagen;
+                document.getElementById('modal-img').alt = 'Imagen de ' + datos.nombre;
+                document.getElementById('modal-numero').textContent = datos.numero;
+                document.getElementById('modal-tipo').textContent = datos.tipo;
+                document.getElementById('modal-altura').textContent = datos.altura;
+                document.getElementById('modal-peso').textContent = datos.peso;
+                document.getElementById('modal-habilidades').textContent = datos.habilidades;
+                modal.showModal();
+            });
+        });
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) modal.close();
+        });
+    </script>
 
 </body>
 
