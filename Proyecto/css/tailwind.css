@@ -219,6 +219,15 @@
   }
 }
 @layer utilities {
+  .col-span-full {
+    grid-column: 1 / -1;
+  }
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
+  }
+  .capitalize {
+    text-transform: capitalize;
+  }
   .absolute {
     position: absolute;
   }
