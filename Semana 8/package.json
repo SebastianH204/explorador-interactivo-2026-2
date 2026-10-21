@@ -1,0 +1,14 @@
+{
+  "name": "semana-8",
+  "version": "1.0.0",
+  "description": "Taller semana 8: datos de la API, tres estados y favoritos",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/entrada.css -o ./css/tailwind.css --watch"
+  },
+  "author": "Sebastian Herrera Rueda",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

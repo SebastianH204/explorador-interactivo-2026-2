@@ -35,14 +35,12 @@
                 class="absolute top-full right-0 left-0 hidden flex-col gap-2 bg-[#EF5350] p-4 shadow-lg
                        md:static md:flex md:flex-row md:gap-2 md:bg-transparent md:p-0 md:shadow-none">
                 <li>
-                    <a href="index.html"
-                        class="block rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#EF5350]
-                               transition hover:border-[#C62828] hover:bg-[#C62828] hover:text-white">Inicio</a>
+                    <a href="index.html" data-vista="todos" aria-current="page"
+                        class="block rounded-lg border border-[#C62828] bg-[#C62828] px-4 py-2 text-sm font-semibold text-white transition">Inicio</a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="block rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#EF5350]
-                               transition hover:border-[#C62828] hover:bg-[#C62828] hover:text-white">Favoritos</a>
+                    <a href="#" data-vista="favoritos"
+                        class="block rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-[#EF5350] transition hover:border-[#C62828] hover:bg-[#C62828] hover:text-white">Favoritos</a>
                 </li>
                 <li>
                     <a href="https://pokeapi.co/docs/v2" target="_blank"
@@ -87,15 +85,24 @@
                                focus:border-[#EF5350] focus:ring-2 focus:ring-red-200 focus:outline-none
                                dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
                         <option value="">Todos los tipos</option>
-                        <option value="grass">Planta</option>
+                        <option value="normal">Normal</option>
                         <option value="fire">Fuego</option>
                         <option value="water">Agua</option>
+                        <option value="grass">Planta</option>
                         <option value="electric">Eléctrico</option>
-                        <option value="ghost">Fantasma</option>
-                        <option value="psychic">Psíquico</option>
-                        <option value="normal">Normal</option>
-                        <option value="fighting">Lucha</option>
                         <option value="ice">Hielo</option>
+                        <option value="fighting">Lucha</option>
+                        <option value="poison">Veneno</option>
+                        <option value="ground">Tierra</option>
+                        <option value="flying">Volador</option>
+                        <option value="psychic">Psíquico</option>
+                        <option value="bug">Bicho</option>
+                        <option value="rock">Roca</option>
+                        <option value="ghost">Fantasma</option>
+                        <option value="dragon">Dragón</option>
+                        <option value="dark">Siniestro</option>
+                        <option value="steel">Acero</option>
+                        <option value="fairy">Hada</option>
                     </select>
                 </div>
 
@@ -111,13 +118,22 @@
         </section>
 
         <section class="mb-8">
-            <h2 class="mb-5 border-b-2 border-gray-200 pb-2 text-xl font-bold text-[#EF5350] dark:border-gray-600">
+            <h2 id="titulo" class="mb-5 border-b-2 border-gray-200 pb-2 text-xl font-bold text-[#EF5350] dark:border-gray-600">
                 Resultados de la búsqueda
             </h2>
 
             <p id="contador" class="mb-4 text-sm text-gray-500 dark:text-gray-400"></p>
 
             <div id="grilla" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+
+            <div class="mt-8 text-center">
+                <button id="btn-mas" type="button" hidden
+                    class="rounded-lg border-2 border-[#EF5350] bg-white px-6 py-2.5 font-semibold text-[#EF5350] transition
+                           hover:bg-[#EF5350] hover:text-white disabled:cursor-not-allowed disabled:opacity-50
+                           dark:bg-gray-800">
+                    Cargar más
+                </button>
+            </div>
         </section>
 
     </main>
